@@ -1,4 +1,3 @@
-library(corrplot)
 library(caret)
 # Read in the data from the CSV
 houseData<-read.csv("kc_house_data.csv")

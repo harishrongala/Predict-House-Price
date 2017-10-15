@@ -1,7 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(gridExtra)
-load('workingScript.R')
+source('workingScript.R')
 
 function(input, output){
 
