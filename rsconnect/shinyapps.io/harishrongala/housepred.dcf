@@ -5,6 +5,9 @@ account: harishrongala
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 225302
-bundleId: 1027200
+bundleId: 1030113
 url: https://harishrongala.shinyapps.io/housepred/
-when: 1508047156.87013
+when: 1508216105.78269
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: King-County-House-Price-Prediction.html|King-County-House-Price-Prediction.md|King-County-House-Price-Prediction.Rpres|King-County-House-Price-Prediction-rpubs.html

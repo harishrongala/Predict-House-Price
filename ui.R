@@ -77,13 +77,18 @@ fluidPage(
     ),
     
     mainPanel(
-      
       h2("Estimate the House Price in King County, Washington"),
       hr(),
       h5("Developed by: Harish K Rongala"),
       h5("Date: October 14th, 2017"),
       hr(),
+      
+      tabsetPanel(
+        tabPanel("Predict House Price", 
+      
+                 
       fluidRow(
+        tags$br(),
         column(4,
                strong("Predicted Price: "),
                verbatimTextOutput("predVal")
@@ -103,10 +108,42 @@ fluidPage(
       
       fluidRow(
         hr(),
-        h3("Checkout the factors that affect the House Price"),
+        h4("Checkout the factors that affect the House Price"),
         plotOutput("barPlot")
       )
       
+        ),
+      
+      tabPanel("ReadMe",
+               tags$br(),
+               p("The prediction model is fairly self-explanatory. 
+                  However, few variable names may need some explanation. 
+                  The dataset can be found at "),
+               tags$a("https://www.kaggle.com/harlfoxem/housesalesprediction"),
+               tags$br(),
+               p("After a few statistical tests, the following variables seemed to be significant in predicting 
+                 the price of the House."),
+               tags$br(),
+               tags$ul(
+                 tags$li("Bedrooms: Total number of bedrooms in the House"),
+                 tags$li("Bathrooms: There will be four major components in the bathroom. They are, toilet, sink, bathtub and shower. 
+                         If a bathroom has just 2 components then it a half bathroom, indicated as 0.5. Similarly, there exists a quarter, 
+                         half and three quarter bathrooms."),
+                 tags$li("Floors: Total number of floors in a house."),
+                 tags$li("Waterfront: Is there a overlooking waterfront."),
+                 tags$li("Living area: Total interior living area in Square feet."),
+                 tags$li("Basement area: Total interior area under the ground level."),
+                 tags$li("Above area: Total interior area above the ground level."),
+                 tags$li("Neighboring area: Total interior living area for the nearest 15 neighbors"),
+                 tags$li("View: How the house looks like on a scale of 0-4. 4 being a great view." ),
+                 tags$li("Quality and design: Rate the grade of construction and design on a scale of 1-13. 1-3 being low, 7 is an average, 
+                         while anything between 11 and 13 shows a high quality."),
+                 tags$li("Year Built or Renovated: Self-explanatory"),
+                 tags$li("Zipcode: Self-explanatory")
+                 
+               )
+               )
+      )
     )
   )
 )

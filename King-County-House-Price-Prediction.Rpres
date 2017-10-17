@@ -1,4 +1,4 @@
-King-County-House-Price-Prediction
+House Price Prediction in King County, Washington
 ========================================================
 author: Harish k Rongala
 date: October 14th 2017
@@ -7,31 +7,41 @@ autosize: true
 Introduction
 ========================================================
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- About the data
+- Relationship among the variables
+- Linear regression model
 
 Data
 ========================================================
 
-```{r}
-source('workingScript.R')
-str(houseData)
-```
+- The data set can be found at <https://www.kaggle.com/harlfoxem/housesalesprediction>
+- Initially, data set contained `r source('workingScript.R'); dim(houseData)[1]` rows and  `r source('workingScript.R'); dim(houseData)[2]` columns.
+- After removing insignificant fields and unwanted rows, the resultant data set has `r source('workingScript.R'); dim(houseDataClean)[1]` rows and  `r source('workingScript.R'); dim(houseDataClean)[2]` columns.
 
 Relationship among the variables
 ========================================================
 
 ```{r, echo=FALSE}
-plot(cars)
+library(ggplot2)
+library(gridExtra)
+source('workingScript.R')
+p1<-ggplot(data = houseDataClean, aes(x = grade, y = price)) + geom_smooth(method = 'lm');
+p2<-ggplot(data = houseDataClean, aes(x = view, y = price)) + geom_smooth(method = 'lm');
+p3<-ggplot(data = houseDataClean, aes(x = sqft_above, y = price)) + geom_smooth(method = 'lm');
+p4<-ggplot(data = houseDataClean, aes(x = sqft_living, y = price)) + geom_smooth(method = 'lm');
+p5<-ggplot(data = houseDataClean, aes(x = sqft_living15, y = price)) + geom_smooth(method = 'lm');
+p6<-ggplot(data = houseDataClean, aes(x = sqft_basement, y = price)) + geom_smooth(method = 'lm');
+p7<-ggplot(data = houseDataClean, aes(x = howOld, y = price)) + geom_smooth(method = 'lm');
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, nrow = 3, ncol = 3)
 ```
 
 Linear model
 ========================================================
 
+- Adjusted R squared value of the linear model is `r source('workingScript.R'); summary(fit)$adj.r`
+- Let's look at the differences between the actual and predicted values of the test cases.
 ```{r, echo=FALSE}
 source('workingScript.R')
-plot(fit)
+summary(diff)
 ```
+- The median value is `r source('workingScript.R'); summary(diff)[[3]]`. So, most of our predictions differ by range of 2000.

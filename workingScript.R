@@ -57,3 +57,10 @@ fit<-lm(price~., train)
 
 # Predict testing data on our linear model
 pred<-predict(fit, newdata =test)
+
+
+# Compare the solutions and predictions
+
+sol<-test$price
+
+diff<-sol-pred
